@@ -83,7 +83,7 @@ case "${flavour}" in
         yum -y install puppet
         ;;
 
-    debian|ubuntu)
+    debian|ubuntu|baixibao)
         codename="$(lsb_release -c | cut -f 2 | tr '[:upper:]' '[:lower:]')"
         package="puppetlabs-release-${codename}.deb"
         if cmd curl; then
@@ -99,7 +99,7 @@ case "${flavour}" in
         # Install the repo data, then fetch newer package lists.
         dpkg -i /tmp/"${package}" || fail "unable to install ${package}"
         apt-get -y update
-        apt-get -y install puppet
+        apt-get -y --force-yes install puppet
         ;;
 
     *)
@@ -139,7 +139,7 @@ case "${flavour}" in
         systemctl start puppetagent
         ;;
 
-    debian|ubuntu)
+    debian|ubuntu|baixibao)
         # puppet is automatically configured to run on boot, but...
         sed -i -e 's/^START=.*$/START=yes/' /etc/default/puppet
         /etc/init.d/puppet start

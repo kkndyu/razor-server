@@ -1,5 +1,5 @@
 GEM
-  remote: https://rubygems.org/
+  remote: https://ruby.taobao.org/
   specs:
     addressable (2.3.8)
     archive (0.0.6)
@@ -120,3 +120,6 @@ DEPENDENCIES
   torquebox-server (~> 3.1.1)
   unix-crypt (~> 1.1.1)
   yard
+
+BUNDLED WITH
+   1.11.2

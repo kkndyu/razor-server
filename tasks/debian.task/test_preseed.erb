@@ -10,14 +10,11 @@ d-i netcfg/no_default_route boolean true
 d-i mirror/country string manual
 d-i mirror/http/countries string manual
 d-i mirror/protocol string http
-d-i mirror/http/hostname string 10.0.2.109
-d-i mirror/http/directory string /bxbos
-#d-i mirror/http/hostname string 10.0.2.129
-#d-i mirror/http/directory string /debian
+d-i mirror/http/hostname string 10.0.2.89
+d-i mirror/http/directory string /bxbos_test
 d-i mirror/http/proxy string
 d-i mirror/suite string jessie
 d-i time/zone string <%= node.metadata['timezone'] || 'US/Pacific' %>
-d-i debian-installer/allow_unauthenticated boolean true
 d-i clock-setup/utc boolean true
 d-i clock-setup/ntp boolean true
 d-i partman-auto/disk string /dev/vda
@@ -38,11 +35,6 @@ d-i partman-partitioning/confirm_write_new_label boolean true
 d-i partman/choose_partition select finish
 d-i partman/confirm boolean true
 d-i partman/confirm_nooverwrite boolean true
-tripwire tripwire/use-localkey boolean false 
-tripwire tripwire/use-sitekey boolean false
-tripwire tripwire/rebuild-config boolean false
-tripwire tripwire/rebuild-policy boolean false
-tripwire tripwire/installed note
 d-i passwd/root-login boolean true
 d-i passwd/make-user boolean false
 d-i passwd/root-password password <%= node.metadata['root_password'] || node.root_password %>
@@ -53,7 +45,6 @@ tasksel tasksel/first multiselect standard
 d-i pkgsel/include string ruby openssh-server build-essential curl
 d-i grub-installer/only_debian boolean true
 d-i grub-installer/with_other_os boolean true
-d-i grub-installer/bootdev string default
 popularity-contest popularity-contest/participate boolean false
 d-i finish-install/reboot_in_progress note
 # Uncomment this for `nomodeset`.

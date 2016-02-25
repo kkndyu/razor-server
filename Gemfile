@@ -1,5 +1,5 @@
 # Only using the SSL interface, please.
-source 'https://rubygems.org'
+source 'https://ruby.taobao.org'
 
 # For the sake of RVM, this overrides the engine line below, which is too
 # complicated for the simple shell parser to handle.  This ensures that RVM
