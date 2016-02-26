@@ -141,8 +141,10 @@ case "${flavour}" in
 
     debian|ubuntu|baixibao)
         # puppet is automatically configured to run on boot, but...
-        sed -i -e 's/^START=.*$/START=yes/' /etc/default/puppet
+	echo "here go into the puppet start step" >> /tmp/razor_complete.log
+	#sed -i -e 's/^START=.*$/START=yes/' /etc/default/puppet
         /etc/init.d/puppet start
+	puppet agent --enable
         ;;
 
     *)
